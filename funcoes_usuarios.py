@@ -62,12 +62,25 @@ def login_usuarios(usuarios):
          if nome in usuarios and usuarios[nome]['senha'] == senha_hash:
               print("login realizado")
               limpar_tela()
-              return nome
+              return nome ,usuarios['nome']['tipo']
          else:
               tentativas += 1
               print("usuario ou senha invalidos")
               continue
     print("numero maximo de tantativas atingidos!")
     return None
-def pagina_principal(usuarios,nome):
-      print(f"ola {nome}!")
+def pagina_principal(tipo,nome,produtos):
+    while True:
+            print(f"usuario logado {nome}")
+            print("escolha uma opção para prosseguir")
+            print('1:cadastrar produto')
+            print("2:visualizar produtos")
+            print("3:deletar produtos")
+            print("4:enecerra sistema")
+
+            escolha=input('sua escolha: ')
+            if escolha not in('1','2','3','4'):
+                print("escolha uma opção valida")
+                continue
+            return escolha
+limpar_tela()

@@ -1,11 +1,17 @@
 import json
-from funcoes import login_usuarios,cadastrar_usuarios,limpar_tela,pagina_principal
+from funcoes_usuarios import login_usuarios,cadastrar_usuarios,limpar_tela,pagina_principal
 try:
     with open('usuarios.json', 'r') as arquivos:
         usuarios = json.load(arquivos) 
 
 except FileNotFoundError:
     usuarios = {}
+
+try:
+     with open ('produtos','r') as arquivos:
+        produtos =json.load(arquivos)
+except FileNotFoundError:
+    produtos = {}
 while True:
         print("MENU INICIAL")
         print("escolha uma opçao")
@@ -22,9 +28,9 @@ while True:
              cadastrar_usuarios(usuarios)
 
         elif escolha == '2':
-             nome=login_usuarios(usuarios)
+             nome,tipo=login_usuarios(usuarios)
              if nome:
-                resultado=pagina_principal(usuarios,nome)
+                resultado=pagina_principal(tipo,nome,produtos)
                 if resultado == 'logout':
                      break
 
