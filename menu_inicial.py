@@ -28,10 +28,13 @@ while True:
              cadastrar_usuarios(usuarios)
 
         elif escolha == '2':
-             nome,tipo=login_usuarios(usuarios)
-             if nome:
-                resultado=pagina_principal(tipo,nome,produtos)
-                if resultado == 'logout':
-                     break
+             resultado=login_usuarios(usuarios)
+
+             if resultado:
+                  nome,tipo=resultado
+                  pagina_principal(nome,tipo,produtos)
+             
+                
+                 
 
 
