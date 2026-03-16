@@ -1,7 +1,7 @@
 {
     "1": {
-        "nome": "macarrao",
-        "preco": 20.2,
-        "estoque": 10
+        "nome": "macarr\u00e3o",
+        "preco": 15.0,
+        "estoque": 100
     }
 }

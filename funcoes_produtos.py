@@ -1,7 +1,7 @@
 from funcoes_usuarios import limpar_tela,salvar_produto
 
 def cadastrar_produto(produtos):
-    proximo_id= max(produtos.keys(),default=0)+1
+    proximo_id= max([int(k) for k in produtos.keys()]+[0])+1
     while True:
         nome = input("Digite o nome do produto: ")
         if nome in produtos:
@@ -18,15 +18,16 @@ def cadastrar_produto(produtos):
         if estoque < 0:
             print("A quantidade do produto não pode ser negativa!")
             continue
-        produtos[proximo_id] = {
+        produtos[str(proximo_id)] = {
             'nome': nome,
             'preco': preco,
             'estoque': estoque
         }
         salvar_produto(produtos)
         print(f"Produto cadastrado com sucesso!")
-        limpar_tela()
-        break   
+        cadastro=input("Deseja cadastrar outro produto? (s/n): ").lower()
+        if cadastro != 's':
+            return
 def remover_produto(produtos):
     while True:
         if not produtos:
