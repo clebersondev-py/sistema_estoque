@@ -2,6 +2,11 @@
     "1": {
         "nome": "macarr\u00e3o",
         "preco": 15.0,
-        "estoque": 100
+        "estoque": 97
+    },
+    "2": {
+        "nome": "arroz",
+        "preco": 35.0,
+        "estoque": 96
     }
 }

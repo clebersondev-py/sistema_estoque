@@ -1,10 +1,10 @@
 from funcoes_usuarios import limpar_tela,salvar_produto
 
 def cadastrar_produto(produtos):
-    proximo_id= max([int(k) for k in produtos.keys()]+[0])+1
+    proximo_id = str(max(map(int, produtos.keys()), default=0) + 1)
     while True:
         nome = input("Digite o nome do produto: ")
-        if nome in produtos:
+        if any(produto['nome'].lower() == nome.lower() for produto in produtos.values()):
             print("Produto já cadastrado!")
             continue
         if not nome:
@@ -76,17 +76,27 @@ def comprar_produto(produtos,carrinho):
             if quantidade > produtos[id_produto]['estoque']:
                 print("Quantidade solicitada excede o estoque disponível!")
                 continue
-            item={
-                'id': id_produto,
-                'nome': produtos[id_produto]['nome'],
-                'preco': produtos[id_produto]['preco'],
-                'quantidade': quantidade
-            }
-            carrinho.append(item)
+            produto_existente = None
+
+            for item in carrinho:
+                    if item['id'] == id_produto:
+                        produto_existente = item
+                        break
+
+            if produto_existente:
+                    produto_existente['quantidade'] += quantidade
+            else:
+                    item = {
+                        'id': id_produto,
+                        'nome': produtos[id_produto]['nome'],
+                        'preco': produtos[id_produto]['preco'],
+                        'quantidade': quantidade
+                    }
+                    carrinho.append(item)
             print(f"{quantidade} unidade(s) de {produtos[id_produto]['nome']} adicionada(s) ao carrinho!")
             adicionar_mais = input("Deseja adicionar mais produtos ao carrinho? (s/n): ").lower()
             if adicionar_mais != 's':
-                break
+                return 'comprar'
         else:
             print("Produto não encontrado!")
             continue
