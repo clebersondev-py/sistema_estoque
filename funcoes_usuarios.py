@@ -93,27 +93,36 @@ def pagina_principal(nome,tipo,produtos):
     while True:
         
         if tipo == "user":
+            print("=" * 20 )
             print(f"Ola ,seja bem  vindo {nome}!")
-
-            escolha=input("escolha uma opção para prosseguir: ")
+            print("=" * 20 )
+            print("O que deseja fazer?")
+            print("_" * 20 )
+            
             print("1:visualizar produtos")
             print("2:comprar")
             print("3:sair")
+            escolha=input("escolha uma opção para prosseguir: ")
             if escolha in("1","2","3"):
                 return escolha
             else:
                 print("escolha uma opção valida")
                 continue
         elif tipo == "admin":
+            print("=" * 20 )
             print(f"Olá,seja bem vindo {nome}!")
+            print("=" * 20 )
+            print("O que deseja fazer?")    
+            print("_" * 20 )
 
-            escolha2=input("escolha uma opção para prosseguir: ")
+            
             print("1:cadastrar produto!")
             print("2:remover produto")
             print("3:visualizar produtos")
             print("4:comprar")
             print("5:sair")
-            if escolha2 in("1","2","3""4","5"):
+            escolha2=input("escolha uma opção para prosseguir: ")
+            if escolha2 in("1","2","3","4","5"):
                 return escolha2
             else:
                 print("escolha uma opção valida")

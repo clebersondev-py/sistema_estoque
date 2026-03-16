@@ -6,5 +6,9 @@
     "cleberson mapeli": {
         "senha": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
         "tipo": "user"
+    },
+    "mapeli": {
+        "senha": "f36c000fb88a191cb23d1e745058c3ec489f4db6c7815c2c1168e2f01ea20602",
+        "tipo": "admin"
     }
 }
